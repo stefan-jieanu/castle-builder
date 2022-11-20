@@ -1,0 +1,29 @@
+{
+  "name": "castle-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefan-jieanu/castle-builder.git"
+  },
+  "proxy": "http://localhost:8200",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefan-jieanu/castle-builder/issues"
+  },
+  "homepage": "https://github.com/stefan-jieanu/castle-builder#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
