@@ -51,7 +51,6 @@ export default function Navigation() {
         elevation={0}>
         <Toolbar>
           <IconButton
-            color='white'
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -62,7 +61,6 @@ export default function Navigation() {
           <Typography
             variant="h6"
             component="div"
-            color='white'
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             MUI
