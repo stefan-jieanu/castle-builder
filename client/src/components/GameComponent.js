@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography} from '@mui/material';
-import { game } from '../game/Game';
+import { createGame } from '../game/GameEntry';
 
 
 const GameComponent = React.memo(props => {
@@ -8,7 +7,8 @@ const GameComponent = React.memo(props => {
   const mountRef = React.useRef(null);
 
   React.useEffect(() => {
-    let app = game(mountRef);
+    console.log('game component mounted');
+    let app = createGame(mountRef, 1150, 650);
 
     return () => {
       // On unload stop the application

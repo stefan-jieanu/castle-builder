@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Container, Grid, Typography} from '@mui/material';
 import { ThemeProvider, CssBaseline } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { appTheme } from "./themes/theme";
 import './App.css';
 
@@ -25,15 +26,21 @@ function App() {
       direction='column'
       justify='center'
       style={{minHeight: '100vh'}}>
-      <Container>
-        <Grid item width='100%'>
-          <Nav />
-        </Grid>
-        <Grid item textAlign='center' marginTop='150px'>
-          {/* If user is logged in */}
-          <GameComponent />
-        </Grid>
-      </Container>
+      {/* <BrowserRouter>
+        <Routes> */}
+          {/* <Route path='/'> */}
+            <Container>
+            <Grid item width='100%'>
+              <Nav />
+            </Grid>
+              <Grid item textAlign='center' marginTop='150px'>
+                <GameComponent />
+              </Grid>
+            </Container>
+            {/* </Route> */}
+        {/* </Routes>
+      </BrowserRouter> */}
+
 
       {/* else */}
       {/* <Grid item md={12} textAlign='center'>

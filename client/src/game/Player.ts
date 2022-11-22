@@ -1,8 +1,11 @@
 import * as PIXI from 'pixi.js';
 
 export default class Player extends PIXI.Graphics {
-  constructor(x, y, w, h) {
-    super(x, y, w, h);
+  moveSpeed: number;
+  moveVec: {x: number, y: number};
+
+  constructor(x: number, y: number, w: number, h: number) {
+    super();
     this.beginFill(0xff0000);
     this.drawRect(100, 100, 50, 50);
 
@@ -19,21 +22,21 @@ export default class Player extends PIXI.Graphics {
   }
 
   onMoveInput(key) {
-    if (key.key == 'w') {
+    if (key.key === 'w') {
       this.moveVec.y = -this.moveSpeed;
     }
-    if (key.key == 's') {
+    if (key.key === 's') {
       this.moveVec.y = this.moveSpeed;
     }
-    if (key.key == 'a') {
+    if (key.key === 'a') {
       this.moveVec.x = -this.moveSpeed;
     }
-    if (key.key == 'd') {
+    if (key.key === 'd') {
       this.moveVec.x = this.moveSpeed;
     }
   }
 
-  onMoveReset(key) {
+  onMoveReset() {
     this.moveVec = {
       x: 0,
       y: 0
