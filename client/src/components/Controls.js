@@ -59,6 +59,9 @@ export default function Controls() {
         htmlFor='color-input'>
         Color
       </InputLabel>
+      <Typography>
+        {castleConf.color}
+      </Typography>
       <Input  
         id='color-input'
         defaultValue={castleConf.color} 

@@ -14,11 +14,11 @@ export const createGame = (mountRef, windowW, windowH) => {
 
 
   document.addEventListener('keydown', (key) => {
-    game.onKeyUp(key);
+    game.onKeyDown(key);
   });
 
   document.addEventListener('keyup', (key) => {
-    game.onKeyDown(key);
+    game.onKeyUp(key);
   });
 
    return game.getPIXIApp();

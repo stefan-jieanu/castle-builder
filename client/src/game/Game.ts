@@ -2,16 +2,24 @@ import * as PIXI from 'pixi.js';
 // @ts-ignore
 import Player from './Player.ts';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 export default class Game {
+  static instance: Game;
   background: number;
   app: PIXI.Application;
   player: Player;
 
+  test: any;
+  testSend: () => void;
+
   constructor(windowWidth: number, windowHeight: number) {
+    Game.instance = this;
+
     this.app = new PIXI.Application({
       width: windowWidth,
       height: windowHeight,
-      backgroundColor: 0x073d04,
+      backgroundColor: 0x46af23,
     });
 
     this.player = new Player(100, 100, 50, 50);
@@ -40,11 +48,18 @@ export default class Game {
     return this.app;
   }
 
-  onKeyUp(key): void {
+  onKeyDown(key): void {
+    if (key.key === 'f') {
+      console.log(this.test);
+    }
+
+    if (key.key === 'g') {
+      Game.instance.testSend();
+    }
     this.player.onMoveInput(key);
   }
 
-  onKeyDown(key): void {
+  onKeyUp(key): void {
     this.player.onMoveReset();
   }
 }

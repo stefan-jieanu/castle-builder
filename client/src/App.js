@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Container, Grid, Typography} from '@mui/material';
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Controls from './components/Controls';
 import { appTheme } from "./themes/theme";
 import './App.css';
 
@@ -33,9 +34,10 @@ function App() {
             <Grid item width='100%'>
               <Nav />
             </Grid>
-              <Grid item textAlign='center' marginTop='150px'>
-                <GameComponent />
-              </Grid>
+            <Grid item textAlign='center' marginTop='150px'>
+              <Controls/>
+              <GameComponent />
+            </Grid>
             </Container>
             {/* </Route> */}
         {/* </Routes>
