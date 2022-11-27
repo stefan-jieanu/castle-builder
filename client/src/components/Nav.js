@@ -12,9 +12,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -30,13 +30,8 @@ export default function Navigation() {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <Link to='/'>Home</Link>
+        <Link to='/login'>Login</Link>
       </List>
     </Box>
   );
@@ -66,11 +61,8 @@ export default function Navigation() {
             Awesome Game Name
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
+            <Button> <Link to='/' style={{textDecoration: 'none'}}> <Typography color='white'>Home</Typography> </Link> </Button>
+            <Button> <Link to='/login' style={{textDecoration: 'none'}}> <Typography color='white'>Login</Typography> </Link> </Button>
           </Box>
         </Toolbar>
       </AppBar>
