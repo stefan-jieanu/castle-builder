@@ -5,9 +5,6 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -26,12 +23,13 @@ export default function Navigation() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Awesome Game Name
+        Awesome Site
       </Typography>
       <Divider />
       <List>
         <Link to='/'>Home</Link>
         <Link to='/login'>Login</Link>
+        <Link to='/register'>Register</Link>
       </List>
     </Box>
   );
@@ -63,6 +61,7 @@ export default function Navigation() {
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <Button> <Link to='/' style={{textDecoration: 'none'}}> <Typography color='white'>Home</Typography> </Link> </Button>
             <Button> <Link to='/login' style={{textDecoration: 'none'}}> <Typography color='white'>Login</Typography> </Link> </Button>
+            <Button> <Link to='/register' style={{textDecoration: 'none'}}> <Typography color='white'>Register</Typography> </Link> </Button>
           </Box>
         </Toolbar>
       </AppBar>

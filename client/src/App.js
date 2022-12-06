@@ -12,7 +12,9 @@ import { appTheme } from "./themes/theme";
 import './App.css';
 
 import GameComponent from './components/GameComponent';
-import Nav from './components/Nav.js';
+import Nav from './components/Nav';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   const [data,  setData] = React.useState(null);
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <ThemeProvider theme={appTheme}>
-    <CssBaseline enableColorScheme />
+    <CssBaseline enableColorScheme/>
     <Grid
       container
       spacing={0}
@@ -46,7 +48,10 @@ function App() {
             </Grid>
           } />
           <Route path='/login' element={
-            <Typography>Log in page</Typography>
+            <Login />
+          } />
+          <Route path='/register' element={
+            <Register />
           } />
 
           </Routes>  
