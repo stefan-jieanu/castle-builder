@@ -6,33 +6,45 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
+import { CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { register, reset } from '../store/authSlice';
 import { styles } from '../themes/theme';
 
 export default function Register() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const authState = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (authState.isError)
+      toast.error(authState.message);
+
+    if (authState.isSuccess || authState.user)
+      navigate('/');
+
+    dispatch(reset);
+
+  }, [authState.user, authState.isError, authState.isSuccess, authState.message,
+    navigate, dispatch]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    fetch('http://localhost:8200/api/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: data.get('name'),
-        email: data.get('email'),
-        password: data.get('password')
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      }).catch(error => {
-        console.log(error);
-      });
+    const userData = {
+      name: data.get('name'),
+      email: data.get('email'),
+      password: data.get('password')
+    }
+
+    dispatch(register(userData));
   }; 
 
   return (
@@ -85,6 +97,8 @@ export default function Register() {
               sx={{...styles, mt: 2, mb: 3}}>
               Register
             </Button>
+            {authState.isLoading && (
+            <CircularProgress />)}
           </Box>
         </Box>
       {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}

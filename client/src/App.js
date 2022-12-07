@@ -7,7 +7,10 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Controls from './components/Controls';
+import Sketch from './components/sketch/Sketch';
 import { appTheme } from "./themes/theme";
 import './App.css';
 
@@ -28,36 +31,16 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
     <CssBaseline enableColorScheme/>
-    <Grid
-      container
-      spacing={0}
-      direction='column'
-      justify='center'
-      style={{minHeight: '100vh'}}>
-        <Container>
         <BrowserRouter>
-        <Grid item width='100%'>
           <Nav />
-        </Grid>
-
           <Routes>
-          <Route path='/' element={
-            <Grid item textAlign='center' marginTop='150px'>
-              <Controls/>
-              <GameComponent />
-            </Grid>
-          } />
-          <Route path='/login' element={
-            <Login />
-          } />
-          <Route path='/register' element={
-            <Register />
-          } />
-
+            <Route path='/' element={<h1 style={{textAlign: 'center'}}>Nothing here yet</h1>} />
+            <Route path='/sketch' element={ <Sketch /> } />
+            <Route path='/login' element={ <Login /> }/>
+            <Route path='/register' element={ <Register /> }/>
           </Routes>  
         </BrowserRouter>
-    </Container>    
-    </Grid>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

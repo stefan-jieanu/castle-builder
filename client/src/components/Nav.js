@@ -9,12 +9,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout, reset } from '../store/authSlice';
 
 const drawerWidth = 240;
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {user} = useSelector((state) => state.auth);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -34,6 +40,12 @@ export default function Navigation() {
     </Box>
   );
 
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate('/');
+  }
+
   return (
     <Box 
       sx={{ display: 'flex' }}>
@@ -41,7 +53,7 @@ export default function Navigation() {
         component='nav' 
         position='relative'
         color='transparent'
-        elevation={0}>
+        elevation={2}>
         <Toolbar>
           <IconButton
             aria-label="open drawer"
@@ -60,8 +72,16 @@ export default function Navigation() {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <Button> <Link to='/' style={{textDecoration: 'none'}}> <Typography color='white'>Home</Typography> </Link> </Button>
-            <Button> <Link to='/login' style={{textDecoration: 'none'}}> <Typography color='white'>Login</Typography> </Link> </Button>
-            <Button> <Link to='/register' style={{textDecoration: 'none'}}> <Typography color='white'>Register</Typography> </Link> </Button>
+
+            {user ? 
+            (<>
+              <Button onClick={onLogout}> Logout </Button>
+            </>) : 
+            (<>
+              <Button> <Link to='/login' style={{textDecoration: 'none'}}> <Typography color='white'>Login</Typography> </Link> </Button>
+              <Button> <Link to='/register' style={{textDecoration: 'none'}}> <Typography color='white'>Register</Typography> </Link> </Button>
+            </>)}
+            
           </Box>
         </Toolbar>
       </AppBar>

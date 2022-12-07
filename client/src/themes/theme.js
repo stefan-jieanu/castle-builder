@@ -1,4 +1,4 @@
-import { lightBlue, pink, blueGrey, purple } from "@mui/material/colors";
+import { grey, purple } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 export const styles = {
@@ -23,8 +23,14 @@ export const styles = {
 export const appTheme = createTheme({
   palette: {
     mode: 'dark',
-    background: {
-      default: lightBlue[900]
+    primary: {
+      main: grey[500],
+      light: grey[200],
+      dark: grey[900],
+      darker: '#111111'
+    },
+    secondary: {
+      main: '#ccc'
     }
   },
 });
