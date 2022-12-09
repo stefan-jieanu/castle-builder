@@ -1,5 +1,6 @@
 import React from 'react'
-import createLilySketch from '../../webLilyEngine/entry';
+// import createLilySketch from '../../webLilyEngine/entry';
+import WebLily from 'weblily';
 
 const SketchCanvas = React.memo(props => {
   const canvasRef = React.useRef(null);
@@ -7,7 +8,8 @@ const SketchCanvas = React.memo(props => {
   React.useEffect(() => {
     console.log('Sketch canvas component mounted');
 
-    createLilySketch(canvasRef);
+    // createLilySketch(canvasRef);
+    let app = WebLily.create(canvasRef.current);
 
     return() => {
       // stop engine
