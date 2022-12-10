@@ -9,17 +9,26 @@ const SketchCanvas = React.memo(props => {
     console.log('Sketch canvas component mounted');
 
     // createLilySketch(canvasRef);
-    let app = WebLily.create(canvasRef.current);
+    const app = WebLily.create(canvasRef.current);
+    app.start();
 
     return() => {
       // stop engine
       console.log('Sketch canvas component unmounted');
+      app.stop();
     }
   }, []);
 
   return (
     <>
-      <canvas id="sketch-canvas" ref={canvasRef}></canvas>
+      <canvas
+        id="sketch-canvas"
+        ref={canvasRef}
+        style={{
+          width: '100%',
+          height: '100%'
+        }}>
+      </canvas>
     </>
   )
 })
