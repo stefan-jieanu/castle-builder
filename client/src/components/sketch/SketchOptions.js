@@ -7,7 +7,6 @@ export default function SketchOptions() {
     <Grid 
       container
       spacing={0}
-      maxWidth={200}
       pb={5} pt={1} px={1}
       sx={{
         backgroundColor: 'primary.dark',

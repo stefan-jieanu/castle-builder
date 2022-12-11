@@ -7,7 +7,6 @@ export default function SketchTools() {
     <Grid 
       container
       spacing={0}
-      maxWidth={200}
       sx={{
         backgroundColor: 'primary.dark',
         boxShadow: '5px 6px 5px #000'

@@ -6,14 +6,14 @@ import SketchOptions from './SketchOptions';
 
 export default function Sketch() {
   return (
-    <Grid container spacing={2} mx={2} mt={5}>
-      <Grid item xs={2}>
+    <Grid container mt={5}>
+      <Grid item xs={2} px={2}>
         <SketchTools />
       </Grid>
       <Grid item xs={8}>
         <SketchCanvas />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={2} px={2}>
         <SketchOptions />
       </Grid>
     </Grid>
