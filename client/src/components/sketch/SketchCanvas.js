@@ -6,22 +6,38 @@ const SketchCanvas = memo(props => {
   const canvasRef = useRef(null);
   let appRef = useRef(null);
 
+  const handleResize = useCallback((e) => {
+    appRef.current.onResize(e);
+  }, []);
+
+  const handleKeyDown = useCallback((e) => {
+    appRef.current.onKeyDown(e);
+  }, []);
+
+  const handleKeyUp = useCallback((e) => {
+    appRef.current.onKeyUp(e);
+  }, []);
+
   const handleMouseDown = useCallback((e) => {
-    appRef.current.mouseDownCallback(e);
+    appRef.current.onMouseDown(e);
   }, []);
   
   const handleMouseUp = useCallback((e) => {
-    appRef.current.mouseUpCallback(e);
+    appRef.current.onMouseUp(e);
   }, []);
   
   const handleMouseWheel = useCallback((e) => {
-    appRef.current.mouseScrollCallback(e);
+    appRef.current.onMouseScroll(e);
   }, []);
 
   const handleMouseMove = useCallback((e) => {
-    appRef.current.mouseMoveCallback(e);
+    appRef.current.onMouseMove(e);
   }, []);
 
+  const handleContextMenu = useCallback((e) => {
+    e.preventDefault();
+  }, []);
+  
   useEffect(() => {
     console.log('Sketch canvas component mounted');
 
@@ -31,11 +47,14 @@ const SketchCanvas = memo(props => {
 
     const canvasElem = canvasRef.current;
 
-    window.addEventListener('resize', app.resizeCallback.bind(app));
+    window.addEventListener('resize', handleResize, false);
+    window.addEventListener('keydown', handleKeyDown, false);
+    window.addEventListener('keyup', handleKeyUp, false);
     canvasElem.addEventListener('mousedown', handleMouseDown, false);
     canvasElem.addEventListener('mouseup', handleMouseUp, false);
     canvasElem.addEventListener('wheel', handleMouseWheel, false);
     canvasElem.addEventListener('mousemove', handleMouseMove, false);
+    canvasElem.addEventListener('contextmenu', handleContextMenu, false);
 
     appRef.current = app;
 
@@ -46,6 +65,7 @@ const SketchCanvas = memo(props => {
       canvasElem.removeEventListener('mouseup', handleMouseUp);
       canvasElem.removeEventListener('wheel', handleMouseWheel);
       canvasElem.removeEventListener('mousemove', handleMouseMove);
+      canvasElem.removeEventListener('contextmenu', handleContextMenu);
       app.stop();
     }
   }, []);
