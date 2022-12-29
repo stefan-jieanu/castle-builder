@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
+const path = require('path');
 
 const PORT = process.env.PORT || 8200;
 
@@ -10,6 +11,9 @@ const app = express();
 // Middleware
 // Use cors globally to enable requests to host when on dev
 app.use(cors());
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Body parser
 app.use(express.json());

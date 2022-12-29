@@ -44,7 +44,6 @@ const SketchCanvas = memo(props => {
     // createLilySketch(canvasRef);
     const app = WebLily.create(canvasRef.current);
     app.start();
-
     const canvasElem = canvasRef.current;
 
     window.addEventListener('resize', handleResize, false);
