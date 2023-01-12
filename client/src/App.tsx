@@ -9,7 +9,7 @@ function App() {
     <div>
       <NavbarComponent />
       <SketchCanvas />
-      <div className='relative'>
+      <div>
         <SketchMenu />
       </div>
     </div>

@@ -4,7 +4,8 @@ import {
   WebGLRenderer,
   BoxGeometry,
   MeshBasicMaterial,
-  Mesh
+  Mesh,
+  Color
 } from 'three';
 
 export default class LlySketch {
@@ -29,6 +30,7 @@ export default class LlySketch {
     this._camera = new PerspectiveCamera(75, this._canvas.width / this._canvas.height, 0.1, 1000);
     this._renderer = new WebGLRenderer({canvas: this._canvas, alpha: true});
     this._renderer.setSize(this._canvas.width, this._canvas.height);
+    this._scene.background = new Color(0x662277);
 
     this.resize();
 
@@ -62,10 +64,12 @@ export default class LlySketch {
   private resize(): void {
     // Resize canvas in DOM
     this._canvas.width = window.innerWidth;
-    this._canvas.height = window.innerHeight - 65;
+    this._canvas.height = window.innerHeight;
+    console.log('resize');
 
     // Resize renderer
     this._camera.aspect = this._canvas.width / this._canvas.height;
+    this._camera.updateProjectionMatrix();
     this._renderer.setSize(this._canvas.width, this._canvas.height);
   }
 }

@@ -1,46 +1,27 @@
-import { Sidebar } from "flowbite-react"
-
 function SketchMenu() {
   return (
-    <div className="w-fit ml-3">
-    <Sidebar aria-label="Default sidebar example">
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item
-            href="#">
-            Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item
-            href="#"
-            label="Pro"
-            labelColor="alternative">
-            Kanban
-          </Sidebar.Item>
-          <Sidebar.Item
-            href="#"
-            label="3">
-            Inbox
-          </Sidebar.Item>
-          <Sidebar.Item
-            href="#">
-            Users
-          </Sidebar.Item>
-          <Sidebar.Item
-            href="#">
-            Products
-          </Sidebar.Item>
-          <Sidebar.Item
-            href="#">
-            Sign In
-          </Sidebar.Item>
-          <Sidebar.Item
-            href="#">
-            Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
-    </Sidebar>
-  </div>
+    <div 
+      className="absolute left-0 top-1/2 -translate-y-1/2 bg-red-200 rounded-r-md w-48 flex flex-col">
+        <p className='text-2xl px-4 mt-2'>Flowers</p>
+        <ul>
+          <li className='flex my-2'>
+            <p className='px-4 py-2'>Lily</p>
+            <p className='ml-auto px-4 py-2 mr-2 cursor-pointer rounded hover:bg-red-300 transition-all'>Add</p>
+          </li>
+          <li className='flex my-2'>
+            <p className='px-4 py-2'>Rose</p>
+            <p className='ml-auto px-4 py-2 mr-2 cursor-pointer rounded hover:bg-red-300 transition-all'>Add</p>
+          </li>
+          <li className='flex my-2'>
+            <p className='px-4 py-2'>Daffodil</p>
+            <p className='ml-auto px-4 py-2 mr-2 cursor-pointer rounded hover:bg-red-300 transition-all'>Add</p>
+          </li>
+          <li className='flex my-2'>
+            <p className='px-4 py-2'>Tulip</p>
+            <p className='ml-auto px-4 py-2 mr-2 cursor-pointer rounded hover:bg-red-300 transition-all'>Add</p>
+          </li>
+        </ul>
+    </div>
   )
 }
 
