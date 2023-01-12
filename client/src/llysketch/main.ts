@@ -54,6 +54,7 @@ export default class LlySketch {
   }
 
   public stop(): void {
+    this._renderer.dispose();
     LlySketch.instance = null;
   }
 

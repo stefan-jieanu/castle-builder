@@ -1,17 +1,21 @@
+import React from 'react'
 import { useState } from 'react'
 import NavbarComponent from './components/NavbarComponent'
-import SketchCanvas from './components/Sketch/SketchCanvas'
-import SketchMenu from './components/Sketch/SketchMenu'
+import Sketch from './components/Sketch/Sketch'
 import './tailwind-dist/index.css'
 
 function App() {
   return (
     <div>
-      <NavbarComponent />
-      <SketchCanvas />
-      <div>
-        <SketchMenu />
-      </div>
+      <React.StrictMode>
+        <NavbarComponent />
+      </React.StrictMode>
+
+      <Sketch />
+
+      <React.StrictMode>
+        {/* Everything else */}
+      </React.StrictMode>
     </div>
   )
 }
