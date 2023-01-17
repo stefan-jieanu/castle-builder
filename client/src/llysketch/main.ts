@@ -58,8 +58,36 @@ export default class LlySketch {
     LlySketch.instance = null;
   }
 
-  public onResize(): void {
+  public onResize(e: UIEvent): void {
     this.resize();
+  }
+
+  public onKeyDown(e: KeyboardEvent): void {
+
+  }
+
+  public onKeyUp(e: KeyboardEvent): void {
+
+  }
+
+  public onMouseMove(e: MouseEvent): void {
+
+  }
+
+  public onMouseDown(e: MouseEvent): void {
+
+  }
+
+  public onMouseUp(e: MouseEvent): void {
+
+  }
+
+  public onClick(e: MouseEvent): void {
+
+  }
+
+  public onDoubleClick(e: MouseEvent): void {
+
   }
 
   private resize(): void {
