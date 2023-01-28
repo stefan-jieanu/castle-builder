@@ -5,8 +5,9 @@ import {
   BoxGeometry,
   MeshBasicMaterial,
   Mesh,
-  Color
+  Color,
 } from 'three';
+import { OrbitControls } from './OrbitControls';
 
 export default class LlySketch {
   public static instance: LlySketch | null;
@@ -16,6 +17,7 @@ export default class LlySketch {
   private _camera: PerspectiveCamera;
   private _renderer: WebGLRenderer;
   private _cube: Mesh;
+  private _controls: OrbitControls;
 
   public static create(canvas: HTMLCanvasElement): LlySketch {
     return new LlySketch(canvas);
@@ -31,6 +33,7 @@ export default class LlySketch {
     this._renderer = new WebGLRenderer({canvas: this._canvas, alpha: true});
     this._renderer.setSize(this._canvas.width, this._canvas.height);
     this._scene.background = new Color(0x662277);
+    this._controls = new OrbitControls(this._camera, this._renderer.domElement);
 
     this.resize();
 
@@ -51,6 +54,7 @@ export default class LlySketch {
     this._renderer.render(this._scene, this._camera);
     this._cube.rotation.x += 0.01;
     this._cube.rotation.y += 0.02;
+    this._controls.update();
   }
 
   public stop(): void {
